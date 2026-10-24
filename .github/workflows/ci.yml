@@ -38,7 +38,7 @@ jobs:
         run: pnpm demo
         env:
           BULKHEAD_PACE: "0"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: matrix.os == 'ubuntu-latest' && matrix.node == 24
         with:
           name: coverage
@@ -58,7 +58,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm --filter @bulkhead/web build
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: web-dist
           path: apps/web/dist/
@@ -82,7 +82,7 @@ jobs:
       - run: pnpm e2e
         env:
           CI: "true"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: playwright-report
