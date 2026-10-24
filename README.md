@@ -1,8 +1,22 @@
 <div align="center">
 
-<img src="docs/assets/mark.svg" width="56" alt="" />
+<img src="docs/assets/mark.svg" width="104" alt="Bulkhead logo: a ship's hull divided into three compartments by two orange bulkheads" />
 
 # Bulkhead
+
+[![CI](https://github.com/opeblow/bulkhead/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/opeblow/bulkhead/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/opeblow/bulkhead/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/opeblow/bulkhead/actions/workflows/codeql.yml)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-15171A?style=flat-square)](LICENSE)
+[![Airwallex Agentic Banking Hackathon: Track 6](https://img.shields.io/badge/Airwallex_Hackathon-Track_6-E0531F?style=flat-square)](https://airwallex.hackerearth.com/)
+
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-22%2B-339933?style=flat-square&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![pnpm](https://img.shields.io/badge/pnpm-workspace-F69220?style=flat-square&logo=pnpm&logoColor=white)](https://pnpm.io/)
+[![React](https://img.shields.io/badge/React-19-149ECA?style=flat-square&logo=react&logoColor=white)](https://react.dev/)
+[![Fastify](https://img.shields.io/badge/Fastify-5-15171A?style=flat-square&logo=fastify&logoColor=white)](https://fastify.dev/)
+[![Claude](https://img.shields.io/badge/Claude-Opus_5.5-D97757?style=flat-square&logo=anthropic&logoColor=white)](https://www.anthropic.com/)
+[![Tests](https://img.shields.io/badge/tests-63_unit_%2B_2_e2e-1E6B5A?style=flat-square&logo=vitest&logoColor=white)](#testing-and-quality)
+[![Docker](https://img.shields.io/badge/Docker-ready-2496ED?style=flat-square&logo=docker&logoColor=white)](Dockerfile)
 
 **Payroll for many employers. Money that never mixes.**
 
