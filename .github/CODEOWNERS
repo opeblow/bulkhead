@@ -1,0 +1,6 @@
+# Money-moving code needs a second pair of eyes.
+*                          @opeblow
+/packages/core/            @opeblow
+/packages/airwallex/       @opeblow
+/packages/agent/src/engine.ts @opeblow
+/SECURITY.md               @opeblow
