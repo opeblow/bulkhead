@@ -1,0 +1,20 @@
+{
+  "name": "@bulkhead/agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Bulkhead payroll run engine: compartment pipelines, advisor (Claude or deterministic), approvals, reconciliation.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "build": "echo \"@bulkhead/agent is consumed as TypeScript source\""
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.1.0",
+    "@bulkhead/airwallex": "workspace:*",
+    "@bulkhead/core": "workspace:*",
+    "zod": "^4.6.7"
+  }
+}
