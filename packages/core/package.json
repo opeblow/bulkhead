@@ -1,0 +1,14 @@
+{
+  "name": "@bulkhead/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Bulkhead domain core: money, tenant compartments, payroll pricing, policy, approvals, ledger and audit.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "build": "echo \"@bulkhead/core is consumed as TypeScript source\""
+  }
+}
