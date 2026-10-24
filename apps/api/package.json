@@ -1,0 +1,21 @@
+{
+  "name": "@bulkhead/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch --clear-screen=false src/main.ts",
+    "start": "tsx src/main.ts",
+    "demo": "tsx src/demo-cli.ts",
+    "typecheck": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@bulkhead/agent": "workspace:*",
+    "@bulkhead/airwallex": "workspace:*",
+    "@bulkhead/core": "workspace:*",
+    "@fastify/static": "^10.1.7",
+    "fastify": "^5.12.7",
+    "tsx": "^4.23.15"
+  }
+}
