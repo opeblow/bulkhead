@@ -1,0 +1,38 @@
+name: Airwallex sandbox smoke test
+
+# Runs the full Track 6 scenario against the REAL Airwallex sandbox.
+# Needs repository secrets AIRWALLEX_CLIENT_ID and AIRWALLEX_API_KEY on an account
+# with connected accounts + platform payments enabled. Manual only: it creates
+# sandbox objects and is subject to sandbox rate limits.
+
+on:
+  workflow_dispatch:
+    inputs:
+      existing_accounts:
+        description: "Comma-separated acct_ ids (A,B,C) to reuse; blank = create new ones"
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  sandbox:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment: airwallex-sandbox
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Run scenario against sandbox
+        run: pnpm --filter @bulkhead/api exec tsx src/sandbox-smoke.ts
+        env:
+          AIRWALLEX_MODE: sandbox
+          AIRWALLEX_CLIENT_ID: ${{ secrets.AIRWALLEX_CLIENT_ID }}
+          AIRWALLEX_API_KEY: ${{ secrets.AIRWALLEX_API_KEY }}
+          AIRWALLEX_EMPLOYER_ACCOUNT_IDS: ${{ inputs.existing_accounts }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
