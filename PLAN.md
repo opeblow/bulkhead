@@ -23,17 +23,17 @@ The builder guide's _Build around a financial decision_ section reads like a rub
 
 ## Status
 
-| Milestone                                                                                                           | State                                                                   |
-| ------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| Domain core: money, compartments, pricing, policy, approvals, ledger, audit                                         | ✅ done, tested                                                         |
-| Airwallex client + simulator covering every Track 6 watch-out                                                       | ✅ done, tested                                                         |
-| Run engine: three concurrent lanes, shortfall handling, bridge, bank-change gate, bank return                       | ✅ done, end-to-end tests                                               |
-| Claude advisor with structured output + rule-based fallback                                                         | ✅ done (needs `ANTHROPIC_API_KEY` to exercise live)                    |
-| Console: run view, approvals, ledger, API trace, audit chain, intake lab                                            | ✅ done, Playwright e2e                                                 |
-| Landing page                                                                                                        | ✅ done                                                                 |
-| CI: lint, typecheck, tests (Linux + Windows, Node 22/24), e2e, Docker smoke, CodeQL, dependency review, secret scan | ✅ written                                                              |
-| Product launch film                                                                                                 | ✅ 2:54 film (kept out of the repo; shared as a video link)             |
-| Live run against the Airwallex sandbox with platform access                                                         | ⏳ blocked on Airwallex enabling connected accounts + platform payments |
+| Milestone                                                                                                           | State                                                                         |
+| ------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Domain core: money, compartments, pricing, policy, approvals, ledger, audit                                         | Done, tested                                                                  |
+| Airwallex client + simulator covering every Track 6 watch-out                                                       | Done, tested                                                                  |
+| Run engine: three concurrent lanes, shortfall handling, bridge, bank-change gate, bank return                       | Done, end-to-end tests                                                        |
+| Claude advisor with structured output + rule-based fallback                                                         | Done (needs `ANTHROPIC_API_KEY` to exercise live)                             |
+| Console: run view, approvals, ledger, API trace, audit chain, intake lab                                            | Done, Playwright e2e                                                          |
+| Landing page                                                                                                        | Done                                                                          |
+| CI: lint, typecheck, tests (Linux + Windows, Node 22/24), e2e, Docker smoke, CodeQL, dependency review, secret scan | Done, workflows written                                                       |
+| Product launch film                                                                                                 | Done, 2:54 film (kept out of the repo; shared as a video link)                |
+| Live run against the Airwallex sandbox with platform access                                                         | Pending, blocked on Airwallex enabling connected accounts + platform payments |
 
 ## Next, in order
 
