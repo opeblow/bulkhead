@@ -1,0 +1,30 @@
+name: Bug report
+description: Something behaves incorrectly
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: Include the run id and the timeline entry if you have it.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Airwallex mode
+      options: [simulator, sandbox]
+    validations:
+      required: true
+  - type: checkboxes
+    id: money
+    attributes:
+      label: Money safety
+      options:
+        - label: This bug could move money incorrectly (we triage these first; see SECURITY.md for anything exploitable)
