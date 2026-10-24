@@ -1,0 +1,112 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Lint · typecheck · test (${{ matrix.os }}, Node ${{ matrix.node }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test:coverage
+      - name: Headless Track 6 scenario (proof report)
+        run: pnpm demo
+        env:
+          BULKHEAD_PACE: "0"
+      - uses: actions/upload-artifact@v4
+        if: matrix.os == 'ubuntu-latest' && matrix.node == 24
+        with:
+          name: coverage
+          path: coverage/
+          retention-days: 14
+
+  build:
+    name: Build console
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @bulkhead/web build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: web-dist
+          path: apps/web/dist/
+          retention-days: 7
+
+  e2e:
+    name: End-to-end (Playwright)
+    runs-on: ubuntu-latest
+    needs: build
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @bulkhead/web build
+      - run: pnpm --filter @bulkhead/web exec playwright install --with-deps chromium
+      - run: pnpm e2e
+        env:
+          CI: "true"
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: apps/web/playwright-report/
+          retention-days: 7
+
+  docker:
+    name: Docker image
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false
+          load: true
+          tags: bulkhead:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - name: Smoke test container
+        run: |
+          docker run -d --name bh -p 8787:8787 bulkhead:ci
+          for i in $(seq 1 30); do curl -fsS localhost:8787/readyz && break; sleep 2; done
+          curl -fsS localhost:8787/api/state | head -c 300
+          docker logs bh
