@@ -1,0 +1,57 @@
+# ─────────────────────────────────────────────────────────────
+# Bulkhead · files that must never be committed
+# ─────────────────────────────────────────────────────────────
+
+# Launch-film production workspace (source, renders, MP4s).
+# Kept locally; the finished video is shared separately.
+production/
+
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+*.tsbuildinfo
+
+# Tests and coverage
+coverage/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+.test-data/
+.e2e-data/
+
+# Runtime data (audit chain JSONL written by the API)
+data/
+*.sqlite
+*.sqlite-*
+
+# Secrets and local environment (keep the example)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Media renders that don't belong in source control
+*.mp4
+*.mov
+*.wav
+!docs/assets/**
+
+# Editors and OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
