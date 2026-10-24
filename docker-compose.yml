@@ -1,0 +1,15 @@
+services:
+  bulkhead:
+    build: .
+    ports:
+      - "8787:8787"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      BULKHEAD_PACE: "650"
+    volumes:
+      - bulkhead-data:/data
+    restart: unless-stopped
+volumes:
+  bulkhead-data:
