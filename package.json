@@ -1,0 +1,34 @@
+{
+  "name": "bulkhead",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Bulkhead — an agentic multi-employer payroll executor on Airwallex. Every employer is a sealed compartment.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "packageManager": "pnpm@11.9.0",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "dev": "pnpm -r --parallel --filter @bulkhead/api --filter @bulkhead/web dev",
+    "build": "pnpm -r build",
+    "start": "pnpm --filter @bulkhead/api start",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "e2e": "pnpm --filter @bulkhead/web e2e",
+    "demo": "pnpm --filter @bulkhead/api demo",
+    "check": "pnpm lint && pnpm typecheck && pnpm test"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.6.2",
+    "@types/node": "^24.19.2",
+    "@vitest/coverage-v8": "^5.0.5",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.5"
+  }
+}
