@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.7
 # ── Bulkhead · single image serving the API and the built console ──────────────
-FROM node:24-slim AS build
+FROM node:25-slim AS build
 ENV PNPM_HOME=/pnpm PATH=/pnpm:$PATH CI=true
 RUN corepack enable
 WORKDIR /app
@@ -14,7 +14,7 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 COPY . .
 RUN pnpm --filter @bulkhead/web build
 
-FROM node:24-slim AS runtime
+FROM node:25-slim AS runtime
 ENV NODE_ENV=production PORT=8787 HOST=0.0.0.0 BULKHEAD_DATA_DIR=/data AIRWALLEX_MODE=simulator
 WORKDIR /app
 COPY --from=build /app /app
