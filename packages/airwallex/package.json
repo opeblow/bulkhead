@@ -1,0 +1,17 @@
+{
+  "name": "@bulkhead/airwallex",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Typed Airwallex platform client (tenant-scoped by construction) plus a high-fidelity sandbox simulator.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "build": "echo \"@bulkhead/airwallex is consumed as TypeScript source\""
+  },
+  "dependencies": {
+    "@bulkhead/core": "workspace:*"
+  }
+}
