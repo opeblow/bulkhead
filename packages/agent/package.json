@@ -12,7 +12,7 @@
     "build": "echo \"@bulkhead/agent is consumed as TypeScript source\""
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^1.1.0",
+    "@anthropic-ai/sdk": "^1.3.0",
     "@bulkhead/airwallex": "workspace:*",
     "@bulkhead/core": "workspace:*",
     "zod": "^4.6.7"
