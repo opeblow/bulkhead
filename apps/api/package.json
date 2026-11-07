@@ -14,8 +14,8 @@
     "@bulkhead/agent": "workspace:*",
     "@bulkhead/airwallex": "workspace:*",
     "@bulkhead/core": "workspace:*",
-    "@fastify/static": "^10.1.7",
-    "fastify": "^5.12.7",
+    "@fastify/static": "^10.1.9",
+    "fastify": "^5.12.8",
     "tsx": "^4.23.15"
   }
 }
